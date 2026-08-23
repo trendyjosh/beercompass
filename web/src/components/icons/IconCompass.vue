@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const currentOrientation = defineModel<number>();
+</script>
+
 <template>
   <svg
     class="max-w-full"
@@ -12,6 +16,9 @@
       d="M 250 42 L 275 92 L 300 142 L 250 117 L 200 142 L 225 92 L 250 42"
       style="fill: rgb(255, 0, 0); transform-origin: 250px 250px 0px"
       id="needle"
+      :style="{
+        transform: `rotate(${currentOrientation}deg)`,
+      }"
     />
     <path
       style="transform-origin: 250px 375px 0px; stroke: rgb(255, 0, 0); stroke-width: 5px"

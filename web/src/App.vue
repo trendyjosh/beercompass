@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconCompass from "./components/icons/IconCompass.vue";
+import CompassElement from "./components/CompassElement.vue";
 </script>
 
 <template>
@@ -11,7 +11,7 @@ import IconCompass from "./components/icons/IconCompass.vue";
           <p id="distance">...</p>
           <p id="direction">...</p>
         </div>
-        <IconCompass />
+        <CompassElement />
       </div>
       <p class="mt-6">
         Map data ©
