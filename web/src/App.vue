@@ -1,47 +1,24 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import IconCompass from "./components/icons/IconCompass.vue";
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
   <main>
-    <TheWelcome />
+    <div class="flex flex-col justify-center items-center h-screen w-screen top-0 p-6">
+      <h1 id="location" class="mb-6 text-2xl">...</h1>
+      <div class="max-w-full aspect-square flex flex-col justify-center text-center gap-2 relative">
+        <div class="absolute w-full h-full flex flex-col justify-center text-center text-3xl">
+          <p id="distance">...</p>
+          <p id="direction">...</p>
+        </div>
+        <IconCompass />
+      </div>
+      <p class="mt-6">
+        Map data ©
+        <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">
+          OpenStreetMap
+        </a>
+      </p>
+    </div>
   </main>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
