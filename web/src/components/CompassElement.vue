@@ -121,7 +121,7 @@ async function positionFound(position: GeolocationPosition) {
 /**
  * Initialise the listener for orientation change.
  */
-function start() {
+function getOrientation() {
   if (typeof DeviceOrientationEvent === "undefined") {
     console.warn("Device orientation not supported");
     return;
@@ -267,7 +267,11 @@ function rotate() {
   currentOrientation.value = newOrientation;
 }
 
-onMounted(start);
+onMounted(() => {
+  getOrientation();
+
+  getLocation();
+});
 </script>
 
 <template>
