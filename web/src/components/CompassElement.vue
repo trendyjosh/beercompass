@@ -127,9 +127,11 @@ function start() {
     return;
   }
 
-  if (typeof DeviceOrientationEvent.requestPermission === "function") {
+  const DOE = DeviceOrientationEvent as unknown as DeviceOrientationEventStatic;
+
+  if (typeof DOE.requestPermission === "function") {
     // iOS 13+ requires explicit permission
-    requestIOSPermission();
+    requestIOSPermission(DOE);
   } else {
     // Android — try absolute first, fall back to relative
     attachListener();
@@ -139,7 +141,7 @@ function start() {
 /**
  * Get permissions from the user to enable orientation.
  */
-function requestIOSPermission() {
+function requestIOSPermission(DOE: DeviceOrientationEventStatic) {
   // iOS requires permission to be requested from a user gesture
   // so we create a button if needed
   const backdrop = document.createElement("div");
@@ -150,7 +152,7 @@ function requestIOSPermission() {
 
   button.addEventListener("click", async () => {
     try {
-      const permission = await DeviceOrientationEvent.requestPermission();
+      const permission = await DOE.requestPermission!();
       if (permission === "granted") {
         button.remove();
         backdrop.remove();
