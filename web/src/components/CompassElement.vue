@@ -217,9 +217,6 @@ function handleOrientation(event: DeviceOrientationEvent) {
   if (event.webkitCompassHeading !== undefined && event.webkitCompassHeading !== null) {
     // iOS — webkitCompassHeading is already 0-360 relative to true north
     heading = event.webkitCompassHeading;
-  } else if (event.absolute && event.alpha !== null) {
-    // Android absolute — convert alpha to compass heading
-    heading = 360 - event.alpha;
   } else if (event.alpha !== null) {
     // Relative fallback — not true north, just device rotation
     heading = 360 - event.alpha;
@@ -228,7 +225,6 @@ function handleOrientation(event: DeviceOrientationEvent) {
   if (heading === null) return;
 
   orientationReadings++;
-  heading = heading;
 
   // Only rotate once stabalised
   if (orientationReadings < stabiliseAfter) return;
