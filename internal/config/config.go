@@ -19,8 +19,8 @@ func Load() (Config, error) {
 
 	host := getenvDefault("POSTGRES_HOST", "localhost")
 	port := getenvDefault("POSTGRES_PORT", "5432")
-	user := getenvDefault("POSTGRES_USER", "cinethread")
-	name := getenvDefault("POSTGRES_DB", "cinethread")
+	user := getenvDefault("POSTGRES_USER", "osm")
+	name := getenvDefault("POSTGRES_DB", "osm")
 
 	dbURL := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=disable",
 		user, url.QueryEscape(pw), host, port, name)
