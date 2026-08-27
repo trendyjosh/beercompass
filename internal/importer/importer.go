@@ -21,6 +21,11 @@ const osmScannerWorkers int = 4
 
 // Download OSM data from geofrabik (updated daily).
 func DownloadOsm() error {
+	// Make sure downloads directory exists
+	if err := os.MkdirAll("downloads", 0755); err != nil {
+		return fmt.Errorf("downloadOsm: creating downloads directory: %w", err)
+	}
+
 	// Use a client with a timeout appropriate for a large PBF file
 	client := &http.Client{Timeout: downloadTimeout}
 
